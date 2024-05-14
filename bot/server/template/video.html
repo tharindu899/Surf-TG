@@ -48,10 +48,22 @@
             width: 90%; /* Adjust the width as needed */
             max-width: 90px auto; /* Ensure it doesn't get too wide */
         }
+        
+        .video-info h6 {
+            white-space: pre-wrap;
+            word-wrap: break-word; /* This will allow long words to wrap */
+            overflow-wrap: break-word; /* For non-webkit browsers */
+            word-break: break-all; /* For non-webkit browsers */
+            hyphens: auto; /* This enables hyphenation */
+        }
 
-        .video-info p {
-            margin: auto;
-            /*font-size: 1.2em auto; /* Adjust font size as needed */
+        .video-info h6 span {
+            color: white;
+        }
+
+        .video-info h6 span::after {
+            content: '\A';
+            white-space: pre;
         }
 
         .button-container {
