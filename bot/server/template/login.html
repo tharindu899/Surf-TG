@@ -5,41 +5,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://cdn.jsdelivr.net/gh/weebzone/weebzone/data/Surf-TG/src/ico2.png" type="image/x-icon">
-    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/weebzone/weebzone/data/Surf-TG/src/ico2.png"
-        type="image/x-icon">
+    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/weebzone/weebzone/data/Surf-TG/src/ico2.png" type="image/x-icon">
     <title>Surf-TG: Login</title>
-    <link rel="stylesheet" href="https://bootswatch.com/5/<!-- Theme -->/bootstrap.min.css">
+    <link rel="stylesheet" href="https://bootswatch.com/5/flatly/bootstrap.min.css">
     <style>
         body {
             height: 100vh;
             margin: 0;
-
-        }
-
-        .container {
-            margin: auto;
-            padding: 0px;
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
+            background-image: url('https://raw.githubusercontent.com/tharindu899/addon/main/One%20piece%20.jpg'); /* Replace with your background image path */
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            backdrop-filter: blur(5px);
         }
 
         form {
-            width: 100%;
-            max-width: 400px;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 100% auto;
+            max-width: 450px auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgb(255, 6, 6);
+            background-color: rgba(0,0,0,0.626);
+        }
+
+        input {
+            font-size: 1.2rem;
+            padding: 10px;
+        }
+
+        .icon {
+            font-size: 1.5rem;
+            margin-right: 15px;
         }
 
         button {
+            font-size: 1.2rem;
+            padding: 10px;
             width: 100%;
-            max-width: 200px;
+            max-width: 250px;
             margin-top: 20px;
         }
 
         a {
             text-decoration: none;
+            box-shadow: 0 5px 10px rgb(243,241,241);
+            background-image: url('https://raw.githubusercontent.com/tharindu899/addon/main/One%20piece%20.jpg'); /* Replace with your background image path */
+            background-size: cover;
         }
 
         .card {
@@ -61,15 +76,14 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark" style="margin-bottom: 1rem; padding: 10px;">
+    <nav class="navbar navbar-expand-lg bg-trans" data-bs-theme="dark" style="margin-bottom: 1rem; padding: 10px;">
         <div class="container" style="align-items: flex-start;">
             <a class="navbar-brand" style="border: 0px;" href="/">
-                <img src="https://cdn.jsdelivr.net/gh/weebzone/weebzone/data/Surf-TG/src/logo%20(2).png" alt="Logo"
-                    height="45">
+                <img src="https://cdn.jsdelivr.net/gh/weebzone/weebzone/data/Surf-TG/src/logo%20(2).png" alt="Logo" height="80">
             </a>
         </div>
     </nav>
-    <div class="card bg-light mb-3" style="width: fit-content; margin: auto;">
+    <div class="card bg-light mb-3" style="width: fit-content; margin-bottom: 25%;">
         <div class="card-header">Welcome To Surf-TG</div>
     </div>
     <div class="container">
@@ -79,15 +93,17 @@
         <form id="signinForm" action="/login" method="post">
             <input type="hidden" name="redirect_url" value="{{ redirect_url }}">
             <fieldset>
-                <div class="inputBox">
-                    <label for="exampleInputUsername" class="form-label mt-4">Username</label>
-                    <input type="text" class="form-control" id="exampleInputUsername" name="username"
-                        placeholder="Enter username">
+                <div class="inputBox d-flex align-items-center">
+                    <span class="icon">
+                        <ion-icon name="person"></ion-icon>
+                    </span>
+                    <input type="text" class="form-control" id="exampleInputUsername" name="username" placeholder="Enter username" style="margin-bottom: 1rem; padding: 10px;">
                 </div>
-                <div class="inputBox">
-                    <label for="exampleInputPassword1" class="form-label mt-4">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" name="password"
-                        placeholder="Password" autocomplete="off">
+                <div class="inputBox d-flex align-items-center">
+                    <span class="icon">
+                        <ion-icon name="lock-closed"></ion-icon>
+                    </span>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password" autocomplete="off" style="margin-bottom: 1rem; padding: 10px;">
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary inputBox">Submit</button>
@@ -95,20 +111,19 @@
             </fieldset>
         </form>
     </div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <footer class="footer mt-auto py-3 text-muted text-center" style="color: white;">
         <div class="container d-flex justify-content-center align-items-center" style="width: 100%; padding: 0 10px;">
             <p class="float-end">
-            <p>Made with <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="red"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
-                </svg> by <a href="https://github.com/weebzone" target="_blank">Karan Adhikari</a><br>
-                &copy; 2024 <a href="https://github.com/weebzone/Surf-TG" target="_blank">Surf-TG</a>. All Rights
-                Reserved.
+                <p>Made with <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="red" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+                    </svg> by <a href="https://github.com/weebzone" target="_blank">Karan Adhikari</a><br>
+                    &copy; 2024 <a href="https://github.com/weebzone/Surf-TG" target="_blank">Surf-TG</a>. All Rights Reserved.
+                </p>
             </p>
         </div>
     </footer>
-
 </body>
 <script>
     window.onload = function () {
@@ -116,9 +131,7 @@
         var errorMessage = errorPopup.querySelector("strong").innerText.trim();
 
         if (errorMessage !== "Oh snap! Invalid username or password") {
-
             errorPopup.style.display = "none";
-
         }
         if (errorMessage === "Oh snap! Invalid username or password") {
             setTimeout(function () {
@@ -127,6 +140,5 @@
         }
     };
 </script>
-
 
 </html>
