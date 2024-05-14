@@ -13,7 +13,8 @@
     <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
     <link rel="stylesheet" href="https://bootswatch.com/5/darkly/bootstrap.min.css">
     <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <style>
         body {
             height: 100vh auto;
@@ -45,13 +46,17 @@
             text-align: left;
             background-color: rgba(12,10,10,0);
             padding: 10px;
+            padding-top: 20px;
+            padding-left: 12px;
+            padding-right: 12px;
+            padding-bottom: 1px;
             border-radius: 5px;
             border: 2px solid rgb(255,23,23);
             width: 90%; /* Adjust the width as needed */
             max-width: 90px auto; /* Ensure it doesn't get too wide */
         }
         
-        .video-info h6 {
+        .video-info p {
             white-space: pre-wrap;
             word-wrap: break-word; /* This will allow long words to wrap */
             overflow-wrap: break-word; /* For non-webkit browsers */
@@ -100,6 +105,12 @@
             .button-container .btn {
                 flex: 1 1 100%;
             }
+        }
+        
+        .material-symbols-outlined {
+            vertical-align: middle;
+            font-size: 20px; /* Adjust the size as needed */
+            color: #1e9644; /* Color for the icon */
         }
 
         nav.navbar {
