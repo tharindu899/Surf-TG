@@ -129,6 +129,7 @@
     </div>
 
     <div class="button-container">
+        <button onclick="mx_pro_player()" class="btn btn-primary">WATCH IN MX PRO PLAYER</button>
         <button onclick="vlc_player()" class="btn btn-primary">WATCH IN VLC PLAYER</button>
         <button onclick="mx_player()" class="btn btn-primary">WATCH IN MX PLAYER</button>
         <button onclick="playit_player()" class="btn btn-primary">WATCH IN PLAYIT PLAYER</button>
@@ -169,6 +170,12 @@
             keyboard: { focused: true, global: true },
             loop: { active: false },
         });
+        
+        function mx_pro_player() {
+            const openDownloadLink = downloadlink;
+            const openMxPro = `intent:${openDownloadLink}#Intent;package=com.mxtech.videoplayer.pro;end`;
+            window.location.href = openMxPro;
+        }
 
         function mx_player() {
             const openDownloadLink = downloadlink;
