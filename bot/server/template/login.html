@@ -43,12 +43,28 @@
             margin-right: 15px;
         }
 
-        button {
+        .rainbow-button {
             font-size: 1.2rem;
             padding: 10px;
             width: 100%;
             max-width: 250px;
             margin-top: 20px;
+            /* Rainbow color effect */
+            background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+            background-size: 1000% 1000%;
+            animation: rainbow 10s ease infinite;
+        }
+
+        @keyframes rainbow {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         a {
@@ -109,7 +125,7 @@
                     <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password" autocomplete="off" style="margin-bottom: 1rem; padding: 15px;">
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary inputBox">Submit</button>
+                    <button type="submit" class="btn btn-primary inputBox rainbow-button">Submit</button>
                 </div>
             </fieldset>
         </form>
