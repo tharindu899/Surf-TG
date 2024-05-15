@@ -28,12 +28,12 @@
             color: #ffffff;
             font-family: 'Merriweather', serif;
             position: relative;
-            min-height: 100vh; /* Ensures the body takes at least the full viewport height */
+            min-height: 100vh auto; /* Ensures the body takes at least the full viewport height */
         }
         
         body::before {
             content: '';
-            position: absolute;
+            position: fixed; /* Change to fixed to cover the entire viewport */
             top: 0;
             left: 0;
             width: 100%;
