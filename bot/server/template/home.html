@@ -58,6 +58,44 @@
     .col:hover {
         transform: scale(1.05);
     }
+
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('https://raw.githubusercontent.com/tharindu899/addon/main/One%20piece%20.jpg');
+        background-size: cover;
+        background-position: center;
+        z-index: -2;
+    }
+
+    body::after {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.695); /* Adjust the opacity as needed */
+        z-index: -1;
+    }
+    
+    nav.navbar {
+        background-color: rgba(0,0,0,0.569);
+        width: 100%;
+        box-shadow: 0 0 15px rgba(148,142,142,0.82); /* Add green shadow */
+        background-image: url('https://raw.githubusercontent.com/tharindu899/addon/main/One%20piece%20.jpg'); /* Replace with your background image path */
+        background-size: cover;
+        background-position: center;
+        color: #ffffff;
+    }
+    
+    footer p {
+        color: #ffffff !important; /* Force footer text and links to be white */
+    }
 </style>
 
 <body>
