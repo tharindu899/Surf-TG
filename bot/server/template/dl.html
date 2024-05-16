@@ -25,15 +25,14 @@
         }
         body::before {
             content: '';
-            position: fixed; /* Change to fixed to cover the entire viewport */
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.638); /* Adjust the opacity as needed */
+            background-color: rgba(0,0,0,0.638);
             z-index: 1;
         }
-
         .container {
             margin: auto;
             padding: 0px;
@@ -43,23 +42,19 @@
             align-items: flex-start;
             gap: 10px;
         }
-        
         .material-symbols-outlined {
             vertical-align: middle;
-            font-size: 20px; /* Adjust the size as needed */
-            color: #1e9644; /* Color for the icon */
+            font-size: 20px;
+            color: #1e9644;
         }
-        
         body * {
             position: relative;
             z-index: 2;
         }
-
         a {
             text-decoration: none;
         }
-
-        .card {        
+        .card {
             margin: 0px auto;
             text-align: left;
             background-color: rgba(12,10,10,0);
@@ -70,32 +65,25 @@
             padding-bottom: 0px;
             border-radius: 5px;
             border: 2px solid rgb(255,23,23);
-            width: 90%; /* Adjust the width as needed */
-            max-width: 90px auto; /* Ensure it doesn't get too wide */
+            width: 90%;
         }
-        
         .card p {
             white-space: pre-wrap;
-            word-wrap: break-word; /* This will allow long words to wrap */
-            overflow-wrap: break-word; /* For non-webkit browsers */
-            word-break: break-all; /* For non-webkit browsers */
-            hyphens: auto; /* This enables hyphenation */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            word-break: break-all;
+            hyphens: auto;
         }
-
         .card h6 span {
             color: white;
         }
-
         .card h6 span::after {
             content: '\A';
             white-space: pre;
         }
-            
-
         .navbar {
             background-color: #000000 !important;
         }
-
         .btn-primary {
             box-shadow: 0 0 20px rgba(240,235,48,0.626);
             background-color: #ffffff34;
@@ -103,36 +91,23 @@
             color: white;
             font-weight: bold;
         }
-
         .btn-primary:hover {
             background-color: #3dff00af;
             color: black;
         }
-
         .footer p {
             background: rgba(0, 0, 0, 0.7);
             color: white;
         }
-
-        /* For WebKit browsers (Chrome, Safari, etc.) */
-        /* Track */
         ::-webkit-scrollbar {
             width: 5px;
-            /* Set the width of the scrollbar */
         }
-
-        /* Handle */
         ::-webkit-scrollbar-thumb {
             background: #888;
-            /* Color of the scrollbar handle */
         }
-
-        /* Handle on hover */
         ::-webkit-scrollbar-thumb:hover {
             background: #555;
-            /* Color of the scrollbar handle on hover */
         }
-
         @media (max-width: 992px) {
             .card {
                 align-items: left;
@@ -140,23 +115,20 @@
                 border-radius: 0%;
                 max-width: 80%
             }
-
             .navbar {
                 padding-right: 15px;
                 padding-left: 15px;
             }
         }
-        
         nav.navbar {
             background-color: rgba(0,0,0,0.569);
             width: 100%;
-            box-shadow: 0 0 15px rgba(148,142,142,0.82); /* Add green shadow */
-            background-image: url('https://raw.githubusercontent.com/tharindu899/addon/main/One%20piece%20.jpg'); /* Replace with your background image path */
+            box-shadow: 0 0 15px rgba(148,142,142,0.82);
+            background-image: url('https://raw.githubusercontent.com/tharindu899/addon/main/One%20piece%20.jpg');
             background-size: cover;
             background-position: center;
             color: #ffffff;
         }
-        
         .btn img {
             width: 28px;
             height: 28px;
@@ -164,7 +136,6 @@
             margin-right: 5px;
             margin-left: 5px;
         }
-        
     </style>
 </head>
 
@@ -172,8 +143,7 @@
     <nav class="navbar navbar-expand-lg" data-bs-theme="dark" style="margin-bottom: 1rem; padding: 10px;">
         <div class="container">
             <a class="navbar-brand" style="border: 0px;" href="/">
-                <img src="https://raw.githubusercontent.com/tharindu899/addon/main/btpng/tg2.png" alt="Logo"
-                    height="30">
+                <img src="https://raw.githubusercontent.com/tharindu899/addon/main/btpng/tg2.png" alt="Logo" height="30">
             </a>
             <div>
                 <form id="signoutForm" action="/logout" method="post">
@@ -231,8 +201,7 @@
         const downloadlink = `${domainUrl}/${videoId}/${encodedName}?id=${idParam}&hash=${hashParam}`;
         
         function download() {
-            const openDownloadLink = downloadlink;
-            window.location.href = openDownloadLink;
+            window.location.href = downloadlink;
         }
             
         function get_file() {
