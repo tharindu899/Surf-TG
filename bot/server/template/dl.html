@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <style>
         body {
-            height: 90vh;
+            height: 100vh;
             margin: 0;
             justify-content: center;
             align-items: center;
@@ -97,20 +97,20 @@
         }
 
         .btn-primary {
-            box-shadow: 0 0 10px rgba(240,235,48,0.626);
+            box-shadow: 0 0 20px rgba(240,235,48,0.626);
             background-color: #ffffff34;
             border: 1px solid yellow;
-            color: yellow;
+            color: white;
             font-weight: bold;
         }
 
         .btn-primary:hover {
-            background-color: yellow;
+            background-color: #3dff00af;
             color: black;
         }
 
         .footer p {
-            background: rgba(0,0,0,0);
+            background: rgba(0, 0, 0, 0.7);
             color: white;
         }
 
@@ -199,6 +199,10 @@
             <img src="https://raw.githubusercontent.com/tharindu899/addon/main/btpng/dowgreen.png" alt="Icon">
             DOWNLOAD
         </button>
+        <button onclick="get_file()" class="btn btn-primary">
+            <img src="https://raw.githubusercontent.com/tharindu899/addon/main/btpng/fyelo.png" alt="Icon">
+            Get File In Bot
+        </button>
     </div>
 
     <footer class="footer mt-auto py-3 text-muted text-center" style="color: white;">
@@ -213,6 +217,60 @@
                 Reserved.
         </div>
     </footer>
+    
+    
+    <script>
+        const videolink = window.location.href;
+        const url = new URL(videolink);
+        const domainUrl = url.origin;
+        const videoIdWithParams = videolink.split('/').pop();
+        const videoId = videoIdWithParams.split('?')[0];
+        const idParam = new URLSearchParams(window.location.search).get('id');
+        const hashParam = new URLSearchParams(window.location.search).get('hash');
+        const encodedName = encodeURIComponent('<!-- Filename -->');
+
+        const downloadlink = `${domainUrl}/${videoId}/${encodedName}?id=${idParam}&hash=${hashParam}`;
+
+        const player = new Plyr('#player', {
+            controls: ['play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen', 'pip', 'airplay', 'settings', "play-large", 'duration'],
+            hideControls: false,
+            keyboard: { focused: true, global: true },
+            loop: { active: false },
+        });
+        
+        
+        function get_file() {
+            const regex = /(\d+)\?id=(\d+)&/;
+            const match = videolink.match(regex);
+            if (match) {
+                const chatId = "-100" + match[1];
+                const messageId = match[2];
+                const openTG = `https://t.me/<!-- Username -->?start=file_${messageId}${chatId}`;
+                window.location.href = openTG;
+            }
+        }
+
+        function copyUrl() {
+            const url = downloadlink;
+            navigator.clipboard.writeText(url)
+                .then(() => {
+                    alert('URL copied to clipboard!');
+                })
+                .catch((error) => {
+                    console.error('Failed to copy URL: ', error);
+                });
+        }
+
+        function updateVideoSource() {
+            const videoElement = document.getElementById('player');
+            const newSrc = downloadlink;
+            videoElement.src = newSrc;
+        }
+
+        window.onload = function () {
+            updateVideoSource();
+        };
+    </script>
 </body>
 
 <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
