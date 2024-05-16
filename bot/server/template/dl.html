@@ -217,37 +217,36 @@
                 Reserved.
         </div>
     </footer>
-</body>
-
-<script>
-    const videolink = window.location.href;
-    const url = new URL(videolink);
-    const domainUrl = url.origin;
-    const videoIdWithParams = videolink.split('/').pop();
-    const videoId = videoIdWithParams.split('?')[0];
-    const idParam = new URLSearchParams(window.location.search).get('id');
-    const hashParam = new URLSearchParams(window.location.search).get('hash');
-    const encodedName = encodeURIComponent('<!-- Filename -->');
     
-    const downloadlink = `${domainUrl}/${videoId}/${encodedName}?id=${idParam}&hash=${hashParam}`;
-    
-    function download() {
-        const openDownloadLink = downloadlink;
-        window.location.href = openDownloadLink;
-    }
+    <script>
+        const videolink = window.location.href;
+        const url = new URL(videolink);
+        const domainUrl = url.origin;
+        const videoIdWithParams = videolink.split('/').pop();
+        const videoId = videoIdWithParams.split('?')[0];
+        const idParam = new URLSearchParams(window.location.search).get('id');
+        const hashParam = new URLSearchParams(window.location.search).get('hash');
+        const encodedName = encodeURIComponent('<!-- Filename -->');
         
-    function get_file() {
-        const regex = /(\d+)\?id=(\d+)&/;
-        const match = videolink.match(regex);
-        if (match) {
-            const chatId = "-100" + match[1];
-            const messageId = match[2];
-            const openTG = `https://t.me/<!-- Username -->?start=file_${messageId}${chatId}`;
-            window.location.href = openTG;
+        const downloadlink = `${domainUrl}/${videoId}/${encodedName}?id=${idParam}&hash=${hashParam}`;
+        
+        function download() {
+            const openDownloadLink = downloadlink;
+            window.location.href = openDownloadLink;
         }
-    }
-        
-</script>
+            
+        function get_file() {
+            const regex = /(\d+)\?id=(\d+)&/;
+            const match = videolink.match(regex);
+            if (match) {
+                const chatId = "-100" + match[1];
+                const messageId = match[2];
+                const openTG = `https://t.me/<!-- Username -->?start=file_${messageId}${chatId}`;
+                window.location.href = openTG;
+            }
+        }
+    </script>
+</body>
 
 <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
 
