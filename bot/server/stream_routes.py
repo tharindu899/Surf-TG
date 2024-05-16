@@ -19,6 +19,20 @@ from bot.server.render_template import render_page
 from bot.helper.cache import rm_cache
 
 from bot.telegram import StreamBot
+async def store_current_url_middleware(request, handler):
+    session = await get_session(request)
+    if request.method == 'GET' and request.path != '/login' and request.path != '/logout':
+        session['current_url'] = str(request.url)
+    response = await handler(request)
+    return response
+
+# Add the middleware to your app
+app = web.Application(middlewares=[store_current_url_middleware])
+
+# Placeholder for render_page function
+async def render_page(*args, **kwargs):
+    # Your implementation here
+    pass
 
 client_cache = {}
 
@@ -32,7 +46,6 @@ async def login_form(request):
     redirect_url = session.get('redirect_url', '/')
     return web.Response(text=await render_page(None, None, route='login', redirect_url=redirect_url), content_type='text/html')
 
-
 @routes.post('/login')
 async def login_route(request):
     session = await get_session(request)
@@ -44,21 +57,20 @@ async def login_route(request):
     error_message = None
     if (username == Telegram.USERNAME and password == Telegram.PASSWORD) or (username == Telegram.ADMIN_USERNAME and password == Telegram.ADMIN_PASSWORD):
         session['user'] = username
-        if 'redirect_url' not in session:
-            session['redirect_url'] = '/'
-        redirect_url = session['redirect_url']
-        del session['redirect_url']
+        redirect_url = session.pop('current_url', '/')
         return web.HTTPFound(redirect_url)
     else:
         error_message = "Invalid username or password"
     return web.Response(text=await render_page(None, None, route='login', msg=error_message), content_type='text/html')
 
-
 @routes.post('/logout')
 async def logout_route(request):
     session = await get_session(request)
     session.pop('user', None)
-    return web.HTTPFound('/login')
+    # Retrieve the current URL from the session
+    current_url = session.pop('current_url', '/')
+    return web.HTTPFound(current_url)
+
 
 
 @routes.post('/create')
