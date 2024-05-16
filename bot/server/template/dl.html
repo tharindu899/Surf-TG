@@ -245,12 +245,6 @@
                 window.location.href = openTG;
             }
         
-            function updateVideoSource() {
-                const videoElement = document.getElementById('player');
-                const newSrc = `${domainUrl}/${videoId}/${encodedName}?id=${idParam}&hash=${hashParam}`;
-                videoElement.src = newSrc;
-            }
-        
             window.onload = function () {
                 updateVideoSource();
             };
