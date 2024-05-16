@@ -328,26 +328,23 @@ async def get_thumbnail(request):
 @routes.get('/watch/{chat_id}', allow_head=True)
 async def stream_handler_watch(request: web.Request):
     session = await get_session(request)
-    if username := session.get('user'):
-        try:
-            chat_id = request.match_info['chat_id']
-            chat_id = f"-100{chat_id}"
-            message_id = request.query.get('id')
-            secure_hash = request.query.get('hash')
-            return web.Response(text=await render_page(message_id, secure_hash, chat_id=chat_id), content_type='text/html')
-        except InvalidHash as e:
-            raise web.HTTPForbidden(text=e.message) from e
-        except FIleNotFound as e:
-            db.delete_file(chat_id=chat_id, msg_id=message_id, hash=secure_hash)
-            raise web.HTTPNotFound(text=e.message) from e
-        except (AttributeError, BadStatusLine, ConnectionResetError):
-            pass
-        except Exception as e:
-            logging.critical(e.with_traceback(None))
-            raise web.HTTPInternalServerError(text=str(e)) from e
-    else:
-        session['redirect_url'] = request.path_qs
-        return web.HTTPFound('/login')
+    try:
+        chat_id = request.match_info['chat_id']
+        chat_id = f"-100{chat_id}"
+        message_id = request.query.get('id')
+        secure_hash = request.query.get('hash')
+        return web.Response(text=await render_page(message_id, secure_hash, chat_id=chat_id), content_type='text/html')
+    except InvalidHash as e:
+        raise web.HTTPForbidden(text=e.message) from e
+    except FIleNotFound as e:
+        db.delete_file(chat_id=chat_id, msg_id=message_id, hash=secure_hash)
+        raise web.HTTPNotFound(text=e.message) from e
+    except (AttributeError, BadStatusLine, ConnectionResetError):
+        pass
+    except Exception as e:
+        logging.critical(e.with_traceback(None))
+        raise web.HTTPInternalServerError(text=str(e)) from e
+
 
 
 @routes.get('/{chat_id}/{encoded_name}', allow_head=True)
