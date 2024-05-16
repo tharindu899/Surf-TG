@@ -242,7 +242,7 @@
         const encodedName = encodeURIComponent('<!-- Filename -->');
 
         const downloadlink = `${domainUrl}/${videoId}/${encodedName}?id=${idParam}&hash=${hashParam}`;
-        const downloadlink1 = `${domainUrl}/${videoId}?id=${idParam}&hash=${hashParam}`;
+        const downloadlink1 = `${domainUrl}/watch/${videoId}?id=${idParam}&hash=${hashParam}`;
 
         const player = new Plyr('#player', {
             controls: ['play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen', 'pip', 'airplay', 'settings', "play-large", 'duration'],
