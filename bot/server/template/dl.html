@@ -221,58 +221,39 @@
     </footer>
     
     
-    <script>
-        const videolink = window.location.href;
-        const url = new URL(videolink);
-        const domainUrl = url.origin;
-        const videoIdWithParams = videolink.split('/').pop();
-        const videoId = videoIdWithParams.split('?')[0];
-        const idParam = new URLSearchParams(window.location.search).get('id');
-        const hashParam = new URLSearchParams(window.location.search).get('hash');
-        const encodedName = encodeURIComponent('<!-- Filename -->');
-
-        const downloadlink = `${domainUrl}/${videoId}/${encodedName}?id=${idParam}&hash=${hashParam}`;
-
-        const player = new Plyr('#player', {
-            controls: ['play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen', 'pip', 'airplay', 'settings', "play-large", 'duration'],
-            hideControls: false,
-            keyboard: { focused: true, global: true },
-            loop: { active: false },
-        });
+        <script>
+            function copyUrl() {
+                const url = `${domainUrl}/${videoId}/${encodedName}?id=${idParam}&hash=${hashParam}`;
+                navigator.clipboard.writeText(url)
+                    .then(() => {
+                        alert('URL copied to clipboard!');
+                    })
+                    .catch((error) => {
+                        console.error('Failed to copy URL: ', error);
+                    });
+            }
+            
+            function download() {
+                const openDownloadLink = downloadlink;
+                window.location.href = openDownloadLink;
+            }
         
-        
-        function get_file() {
-            const regex = /(\d+)\?id=(\d+)&/;
-            const match = videolink.match(regex);
-            if (match) {
+            function get_file() {
                 const chatId = "-100" + match[1];
                 const messageId = match[2];
                 const openTG = `https://t.me/<!-- Username -->?start=file_${messageId}${chatId}`;
                 window.location.href = openTG;
             }
-        }
-
-        function copyUrl() {
-            const url = downloadlink;
-            navigator.clipboard.writeText(url)
-                .then(() => {
-                    alert('URL copied to clipboard!');
-                })
-                .catch((error) => {
-                    console.error('Failed to copy URL: ', error);
-                });
-        }
-
-        function updateVideoSource() {
-            const videoElement = document.getElementById('player');
-            const newSrc = downloadlink;
-            videoElement.src = newSrc;
-        }
-
-        window.onload = function () {
-            updateVideoSource();
-        };
-    </script>
-</body>
-
+        
+            function updateVideoSource() {
+                const videoElement = document.getElementById('player');
+                const newSrc = `${domainUrl}/${videoId}/${encodedName}?id=${idParam}&hash=${hashParam}`;
+                videoElement.src = newSrc;
+            }
+        
+            window.onload = function () {
+                updateVideoSource();
+            };
+        </script>
+    </body>
 </html>
