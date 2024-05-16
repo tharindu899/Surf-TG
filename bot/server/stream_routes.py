@@ -345,7 +345,9 @@ async def stream_handler_watch(request: web.Request):
         except Exception as e:
             logging.critical(e.with_traceback(None))
             raise web.HTTPInternalServerError(text=str(e)) from e
-
+    else:
+        session['redirect_url'] = request.path_qs
+        return web.HTTPFound('/login')
 
 
 @routes.get('/{chat_id}/{encoded_name}', allow_head=True)
