@@ -33,6 +33,25 @@ async def login_form(request):
     return web.Response(text=await render_page(None, None, route='login', redirect_url=redirect_url), content_type='text/html')
 
 
+@routes.post('/login')
+async def login_route(request):
+    session = await get_session(request)
+    if 'user' in session:
+        return web.HTTPFound('/')
+    data = await request.post()
+    username = data.get('username')
+    password = data.get('password')
+    error_message = None
+    if (username == Telegram.USERNAME and password == Telegram.PASSWORD) or (username == Telegram.ADMIN_USERNAME and password == Telegram.ADMIN_PASSWORD):
+        session['user'] = username
+        if 'redirect_url' not in session:
+            session['redirect_url'] = '/'
+        redirect_url = session['redirect_url']
+        del session['redirect_url']
+        return web.HTTPFound(redirect_url)
+    else:
+        error_message = "Invalid username or password"
+    return web.Response(text=await render_page(None, None, route='login', msg=error_message), content_type='text/html')
 
 
 @routes.post('/logout')
