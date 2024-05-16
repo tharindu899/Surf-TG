@@ -19,6 +19,8 @@ from bot.server.render_template import render_page
 from bot.helper.cache import rm_cache
 
 from bot.telegram import StreamBot
+async def render_page(*args, **kwargs):
+    pass
 
 client_cache = {}
 
@@ -58,7 +60,14 @@ async def login_route(request):
 async def logout_route(request):
     session = await get_session(request)
     session.pop('user', None)
-    return web.HTTPFound('/login')
+    
+    # Capture the current URL before logout
+    current_url = str(request.rel_url)
+    
+    # Redirect to the captured URL or a default page
+    return web.HTTPFound(current_url if current_url else '/')
+
+# Your application setup code here
 
 
 @routes.post('/create')
