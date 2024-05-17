@@ -55,16 +55,6 @@
             z-index: 2;
         }
 
-        .video-player {
-            width: 90%;
-            max-width: 800px auto;
-            margin: 20px auto;
-            background-color: rgb(255,11,11);
-            padding: 2px;
-            border-radius: 0px;
-            box-shadow: 0 0 50px rgba(236,13,13,0.753); /* Add green shadow */
-        }
-
         .video-info {
             margin: 0px auto;
             text-align: left;
@@ -176,12 +166,6 @@
         </div>
     </nav>
 
-    <div class="video-player">
-        <video controls crossorigin playsinline data-poster="path/to/poster.jpg" id="player">
-            <source src="#" type="video/mp4" />
-        </video>
-    </div>
-
     <div class="video-info">
         <p><span class="material-symbols-outlined">videocam</span> <h style="color: blue;">Name: <span style="color: white;"><!-- Filename --></span></p>
         <p><span class="material-symbols-outlined">flash_on</span> <h style="color: blue;">Size: <span style="color: white;"> <!-- Size --></span></p>
@@ -189,22 +173,6 @@
 
 
     <div class="button-container">
-        <button onclick="mx_pro_player()" class="btn btn-primary">
-            <img src="https://raw.githubusercontent.com/tharindu899/addon/main/btpng/mxpro.png" alt="Icon">
-            MX PRO PLAYER
-        </button>
-        <button onclick="vlc_player()" class="btn btn-primary">
-            <img src="https://raw.githubusercontent.com/tharindu899/addon/main/btpng/vlcb.png" alt="Icon">
-            VLC PLAYER
-        </button>
-        <button onclick="mx_player()" class="btn btn-primary">
-            <img src="https://raw.githubusercontent.com/tharindu899/addon/main/btpng/mxred.png" alt="Icon">
-            MX PLAYER
-        </button>
-        <button onclick="km_player()" class="btn btn-primary">
-            <img src="https://raw.githubusercontent.com/tharindu899/addon/main/btpng/kmp.png" alt="Icon">
-            KMP PLAYER
-        </button>
         <button onclick="get_file()" class="btn btn-primary">
             <img src="https://raw.githubusercontent.com/tharindu899/addon/main/btpng/tele.png" alt="Icon">
             Get In Telegram
@@ -245,36 +213,6 @@
         const downloadlink = `${domainUrl}/${videoId}/${encodedName}?id=${idParam}&hash=${hashParam}`;
         const downloadlink1 = `${domainUrl}/watch/${videoId}?id=${idParam}&hash=${hashParam}`;
 
-        const player = new Plyr('#player', {
-            controls: ['play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen', 'pip', 'airplay', 'settings', "play-large", 'download', 'duration'],
-            hideControls: false,
-            keyboard: { focused: true, global: true },
-            loop: { active: false },
-        });
-        
-        function mx_pro_player() {
-            const openDownloadLink = downloadlink;
-            const openMxPro = `intent:${openDownloadLink}#Intent;package=com.mxtech.videoplayer.pro;end`;
-            window.location.href = openMxPro;
-        }
-
-        function mx_player() {
-            const openDownloadLink = downloadlink;
-            const openMx = `intent:${openDownloadLink}#Intent;package=com.mxtech.videoplayer.ad;end`;
-            window.location.href = openMx;
-        }
-
-        function vlc_player() {
-            const openDownloadLink = downloadlink;
-            const openVlc = `vlc://${openDownloadLink}`;
-            window.location.href = openVlc;
-        }
-
-        function km_player() {
-            const openDownloadLink = downloadlink;
-            const openKmplayer = `intent:${openDownloadLink}#Intent;package=com.kmplayer;end`;
-            window.location.href = openKmplayer;
-        }
 
         function download() {
             const openDownloadLink = downloadlink;
