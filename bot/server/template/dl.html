@@ -88,15 +88,17 @@
         }
 
         .button-container {
-            display: inside;
+            display: flex;
             flex-wrap: wrap;
-            justify-content: left;
+            justify-content: center;
             gap: 10px;
             margin: 20px 0;
             width: auto;
         }
 
-        .button-container .btn {
+        .button-container .btn {    
+            justify-content: center;
+            display: flex;
             flex: 1 1 calc(33.333% - 10px);
             max-width: 200px;
             text-align: left;
