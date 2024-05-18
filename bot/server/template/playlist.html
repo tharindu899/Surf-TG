@@ -139,6 +139,15 @@
     .col:hover {
         transform: scale(1.05);
     }
+    
+        .btn img {
+        width: 28px;
+        height: 28px;
+        vertical-align: middle;
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+    
 </style>
 
 <body>
@@ -182,9 +191,9 @@
                             value=""><br>
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn btn-primary  me-2"
-                                onclick="submitEditFileForm()">Submit</button>
-                            <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-danger" onclick="deleteFileItem()">Delete</button>
+                                onclick="submitEditFileForm()"><img src="https://raw.githubusercontent.com/tharindu899/addon/main/btpng/accept.png" alt="Logo"></button>
+                            <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal"><img src="https://raw.githubusercontent.com/tharindu899/addon/main/btpng/cancel.png" alt="Logo"></button>
+                            <button type="button" class="btn btn-danger" onclick="deleteFileItem()"><img src="https://raw.githubusercontent.com/tharindu899/addon/main/btpng/bin.png" alt="Logo"></button>
                         </div>
                     </form>
                 </div>
@@ -218,12 +227,11 @@
     <nav class="navbar navbar-expand-lg bg-primary mb-3 p-1" data-bs-theme="dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
-                <img src="https://cdn.jsdelivr.net/gh/weebzone/weebzone/data/Surf-TG/src/logo%20(2).png" alt="Logo"
-                    height="40">
+                <img src="https://raw.githubusercontent.com/tharindu899/addon/main/btpng/tg2.png" alt="Logo"
+                    height="30">
             </a>
             <form id="signoutForm" action="/logout" method="post" class="d-flex" role="logout">
-                <button type="submit" class="btn btn-secondary btn-sm"><i class="bi bi-box-arrow-left"></i>
-                    Logout</button>
+                <button type="submit" class="btn"><img src="https://raw.githubusercontent.com/tharindu899/addon/main/btpng/logout.png"></img></button>
             </form>
         </div>
     </nav>
@@ -232,15 +240,15 @@
         <div class="card mx-auto text-center">
             <div class="card-header"><!-- Title --></div>
         </div>
-        <button type="button" class="admin-only btn btn-secondary btn-sm" data-bs-toggle="modal"
-            data-bs-target="#createFolderModal" onclick="createPopupForm(event)">Create Folder</button>
+        <button type="button" class="admin-only btn btn-sm" data-bs-toggle="modal"
+            data-bs-target="#createFolderModal" onclick="createPopupForm(event)"><img src="https://raw.githubusercontent.com/tharindu899/addon/main/btpng/create.png" alt="Logo"></button>
     </div>
 
     <div class="container">
         <form class="d-flex" style="margin: auto; padding-top: 10px; padding-bottom: 20px;"
             action="/search/db/<!-- Parent_id -->" method="get">
             <input class="form-control me-sm-2" type="search" placeholder="Search" name="q">
-            <button class="btn btn-secondary my-sm-0" type="submit">Search</button>
+            <button class="btn btn-secondary my-sm-0" type="submit"><img src="https://raw.githubusercontent.com/tharindu899/addon/main/btpng/loupe.png" alt="Logo"></button>
         </form>
     </div>
 
