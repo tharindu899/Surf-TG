@@ -96,16 +96,6 @@
         color: #ffffff;
     }
     
-    .audio-player-wrapper {
-        margin: 10px 0;
-        text-align: center;
-    }
-
-    .audio-player {
-        width: 100%;
-        max-width: 600px;
-    }
-    
     footer p {
         color: #38de0d !important; /* Force footer text and links to be white */
     }
@@ -234,20 +224,14 @@
             <button class="btn btn-secondary" type="submit"><img src="https://raw.githubusercontent.com/tharindu899/addon/main/btpng/loupe.png" alt="Logo"></button>
         </form>
     </div>
-<div class="container py-2">
-    <!-- Telegram File Grid Card -->
-    <div class="row row-cols-2 row-cols-md-4 row-cols-lg-5 g-2">
-        <!-- Telegram File Card -->
-        <!-- Print -->
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <div id="audioPlayerContainer"></div>
+
+    <div class="container py-2">
+        <!-- Telegram File Grid Card  -->
+        <div class="row row-cols-2 row-cols-md-4 row-cols-lg-5 g-2">
+            <!-- Telegram File Card  -->
+            <!-- Print -->
         </div>
     </div>
-</div>
-
-
    <div class="container d-flex align-items-center justify-content-center">
     <div>
         <ul class="pagination">
@@ -322,43 +306,6 @@
 
         window.location.href = newUrl;
     }
-    
-    document.addEventListener("DOMContentLoaded", function() {
-    const audioPlayerContainer = document.getElementById('audioPlayerContainer');
-
-    // Function to create an audio player for each MP3 file
-    function createAudioPlayer(mp3File) {
-        const playerWrapper = document.createElement('div');
-        playerWrapper.classList.add('audio-player-wrapper');
-
-        const audioElement = document.createElement('audio');
-        audioElement.controls = true;
-        audioElement.src = mp3File;
-        audioElement.classList.add('audio-player');
-
-        playerWrapper.appendChild(audioElement);
-        audioPlayerContainer.appendChild(playerWrapper);
-    }
-
-    // Function to fetch MP3 files from the server
-    async function fetchMp3Files() {
-        try {
-            const response = await fetch('/api/mp3files');
-            if (response.ok) {
-                const mp3Files = await response.json();
-                mp3Files.forEach(createAudioPlayer);
-            } else {
-                console.error('Failed to fetch MP3 files');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    }
-
-    // Fetch and display MP3 files
-    fetchMp3Files();
-});
-
 </script>
 
 </html>
