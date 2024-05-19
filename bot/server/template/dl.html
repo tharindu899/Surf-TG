@@ -86,22 +86,20 @@
             content: '\A';
             white-space: pre;
         }
-
         .button-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 10px;
             margin: 20px 0;
-            width: auto;
+            padding-right: 40px;
+            padding-left: 40px;
         }
 
-        .button-container .btn {    
-            justify-content: center;
-            display: flex;
+        .button-container .btn {
             flex: 1 1 calc(33.333% - 10px);
-            max-width: 200px;
-            text-align: left;
+            min-width: 200px;
+            text-align: center;
             background-color: #ffffff34;
             border: none;
             border: 2px solid rgba(240,235,48,0.626);
@@ -180,10 +178,6 @@
             <img src="https://raw.githubusercontent.com/tharindu899/addon/main/btpng/dowgreen.png" alt="Icon">
             DOWNLOAD
         </button>
-        <button onclick="get_file()" class="btn btn-primary">
-            <img src="https://raw.githubusercontent.com/tharindu899/addon/main/btpng/tele.png" alt="Icon">
-            Get In Telegram
-        </button>
         <button onclick="copyUrl()" class="btn btn-primary">
             <img src="https://raw.githubusercontent.com/tharindu899/addon/main/btpng/copy.png" alt="Icon">
             Copy Url
@@ -220,17 +214,6 @@
         function download() {
             const openDownloadLink = downloadlink;
             window.location.href = openDownloadLink;
-        }
-
-        function get_file() {
-            const regex = /(\d+)\?id=(\d+)&/;
-            const match = videolink.match(regex);
-            if (match) {
-                const chatId = "-100" + match[1];
-                const messageId = match[2];
-                const openTG = `https://t.me/<!-- Username -->?start=file_${messageId}${chatId}`;
-                window.location.href = openTG;
-            }
         }
 
         function copyUrl() {
