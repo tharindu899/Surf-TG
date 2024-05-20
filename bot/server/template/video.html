@@ -244,7 +244,6 @@
         const encodedName = encodeURIComponent('<!-- Filename -->');
 
         const downloadlink = `${domainUrl}/${videoId}/${encodedName}?id=${idParam}&hash=${hashParam}`;
-        const downloadlink1 = `${domainUrl}/watch/${videoId}?id=${idParam}&hash=${hashParam}`;
 
         const player = new Plyr('#player', {
             controls: ['play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen', 'pip', 'airplay', 'settings', "play-large", 'duration'],
@@ -294,7 +293,7 @@
         }
 
         function copyUrl() {
-            const url = downloadlink1;
+            const url = downloadlink;
             navigator.clipboard.writeText(url)
                 .then(() => {
                     alert('URL copied to clipboard!');
