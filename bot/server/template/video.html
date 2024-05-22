@@ -57,10 +57,12 @@
 
         .video-player {
             width: 90%;
-            max-width: 800px auto;
             margin: 20px auto;
             background-color: rgb(255,11,11);
             padding: 2px;
+        }
+
+        .plyr {
             border-radius: 0px;
             box-shadow: 0 0 50px rgba(236,13,13,0.753); /* Add green shadow */
         }
@@ -246,7 +248,7 @@
         const downloadlink = `${domainUrl}/${videoId}/${encodedName}?id=${idParam}&hash=${hashParam}`;
 
         const player = new Plyr('#player', {
-            controls: ['play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen', 'pip', 'airplay', 'settings', "play-large", 'duration'],
+            controls: ['play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen', 'airplay', 'settings', "play-large", 'duration'],
             hideControls: true,
             keyboard: { focused: true, global: true },
             loop: { active: false },
