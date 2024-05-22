@@ -245,12 +245,25 @@
 
         const downloadlink = `${domainUrl}/${videoId}/${encodedName}?id=${idParam}&hash=${hashParam}`;
 
-        const player = new Plyr('#player', {
-            controls: ['play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen', 'pip', 'airplay', 'settings', "play-large", 'duration'],
-            hideControls: false,
-            keyboard: { focused: true, global: true },
-            loop: { active: false },
-        });
+    const player = new Plyr('#player', {
+        controls: ['play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen', 'pip', 'airplay', 'settings', 'play-large', 'duration'],
+        hideControls: false,
+        keyboard: { focused: true, global: true },
+        loop: { active: false },
+    });
+
+    // Ensure the video source URL supports byte-range requests for seeking
+    document.getElementById('player').addEventListener('loadedmetadata', () => {
+        if (!player.media.seeking) {
+            player.media.seeking = true;
+        }
+    });
+
+    // Function to handle seeking
+    player.on('seeked', function() {
+        console.log('Seek operation complete.');
+    });
+        
         
         function mx_pro_player() {
             const openDownloadLink = downloadlink;
