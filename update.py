@@ -16,7 +16,7 @@ basicConfig(
 load_dotenv('config.env', override=True)
 
 UPSTREAM_REPO = getenv('UPSTREAM_REPO', "https://github.com/tharindu899/Surf-TG")
-UPSTREAM_BRANCH = getenv('UPSTREAM_BRANCH', "edit")
+UPSTREAM_BRANCH = getenv('UPSTREAM_BRANCH', "cool")
 
 if UPSTREAM_REPO is not None:
     if opath.exists('.git'):
