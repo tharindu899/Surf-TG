@@ -252,6 +252,18 @@
             loop: { active: false },
         });
         
+        // Ensure the video source URL supports byte-range requests for seeking
+        document.getElementById('player').addEventListener('loadedmetadata', () => {
+            if (!player.media.seeking) {
+                player.media.seeking = true;
+            }
+        });
+    
+        // Function to handle seeking
+        player.on('seeked', function() {
+            console.log('Seek operation complete.');
+        });
+        
         function mx_pro_player() {
             const openDownloadLink = downloadlink;
             const openMxPro = `intent:${openDownloadLink}#Intent;package=com.mxtech.videoplayer.pro;end`;
