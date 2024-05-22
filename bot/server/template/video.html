@@ -87,12 +87,12 @@
             text-decoration: none;
         }
 
-        .card {
+        .video-info {
             margin: 0px auto;
             text-align: left;
             background-color: rgba(12,10,10,0);
             padding: 10px;
-            padding-top: 0px;
+            padding-top: 10px;
             padding-left: 12px;
             padding-right: 12px;
             padding-bottom: 1px;
@@ -102,7 +102,7 @@
             max-width: 90px auto; /* Ensure it doesn't get too wide */
         }
         
-        .card p {
+        .video-info p {
             white-space: pre-wrap;
             word-wrap: break-word; /* This will allow long words to wrap */
             overflow-wrap: break-word; /* For non-webkit browsers */
@@ -110,11 +110,11 @@
             hyphens: auto; /* This enables hyphenation */
         }
 
-        .card h6 span {
+        .video-info h6 span {
             color: white;
         }
 
-        .card h6 span::after {
+        .video-info h6 span::after {
             content: '\A';
             white-space: pre;
         }
@@ -203,11 +203,9 @@
             <source src="#" type="video/mp4" />
         </video>
     </div>
-    <div class="card" style="margin: auto; border-radius: 5px;">
-        <div class="video-info">
-            <p><span class="material-symbols-outlined">videocam</span> <h style="color: blue;">Name: <span style="color: white;"><!-- Filename --></span></p>
-            <p><span class="material-symbols-outlined">flash_on</span> <h style="color: blue;">Size: <span style="color: white;"> <!-- Size --></span></p>
-        </div>
+    <div class="video-info">
+        <p><span class="material-symbols-outlined">videocam</span> <h style="color: blue;">Name: <span style="color: white;"><!-- Filename --></span></p>
+        <p><span class="material-symbols-outlined">flash_on</span> <h style="color: blue;">Size: <span style="color: white;"> <!-- Size --></span></p>
     </div>
     <div class="button-container">
         <button onclick="mx_pro_player()" class="btn btn-primary">
