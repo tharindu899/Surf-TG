@@ -249,7 +249,7 @@
         const downloadlink = `${domainUrl}/${videoId}/${encodedName}?id=${idParam}&hash=${hashParam}`;
 
         const player = new Plyr('#player', {
-            controls: ['rewind', 'play', 'fast-forward', 'progress', 'current-time', 'settings', 'quality', 'download', 'captions', 'fullscreen'],
+            controls: ['rewind', 'play', 'fast-forward', 'progress', 'current-time', 'settings', 'quality', 'download', 'audio', 'fullscreen'],
             hideControls: true,
             keyboard: { focused: true, global: true },
             loop: { active: false },
@@ -259,8 +259,7 @@
             tooltips: { controls: true },
             listeners: {
                 download: function () {
-                    const openDownloadLink = downloadlink;
-                    window.location.href = openDownloadLink;
+                    window.location.href = downloadlink;
                 }
             }
         });
