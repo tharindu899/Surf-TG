@@ -271,6 +271,12 @@
             const openVlc = `vlc://${openDownloadLink}`;
             window.location.href = openVlc;
         }
+
+        function km_player() {
+            const openDownloadLink = downloadlink;
+            const openKmplayer = `intent:${openDownloadLink}#Intent;package=com.kmplayer;end`;
+            window.location.href = openKmplayer;
+        }
         
         function km_player() {
         const openDownloadLink = downloadlink;
