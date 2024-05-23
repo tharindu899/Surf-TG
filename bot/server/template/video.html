@@ -219,6 +219,7 @@
             <img src="https://raw.githubusercontent.com/tharindu899/addon/main/btpng/dowgreen.png" alt="Icon">
             DOWNLOAD
         </button>
+        <button onclick="vlc_pc_player()">Open in VLC (PC)</button>
     </div>
 
     <footer class="footer mt-auto py-3 text-muted text-center" style="color: white;">
@@ -270,6 +271,12 @@
             const openDownloadLink = downloadlink;
             const openVlc = `vlc://${openDownloadLink}`;
             window.location.href = openVlc;
+        }
+        
+        function vlc_pc_player() {
+            const openDownloadLink = downloadlink;
+            const openVlcPc = `vlc://${openDownloadLink}`;
+            window.open(openVlcPc, '_blank');
         }
 
         function km_player() {
