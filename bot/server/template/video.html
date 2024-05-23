@@ -248,19 +248,12 @@
         const downloadlink = `${domainUrl}/${videoId}/${encodedName}?id=${idParam}&hash=${hashParam}`;
 
         const player = new Plyr('#player', {
-            controls: ['rewind','play', 'fast-forward', 'progress', 'current-time', 'settings', 'download', 'fullscreen'],
+            controls: ['rewind', 'play', 'fast-forward', 'progress', 'current-time', 'settings', 'download', 'fullscreen'],
             hideControls: true,
             keyboard: { focused: true, global: true },
             loop: { active: false },
             download: {
-                // Specify the download link here
-                // It could be a direct link or a function that returns the link dynamically
-                // If it's a function, it receives the Plyr instance as an argument
-                // Example: download: { enabled: true, element: '.plyrcontrolsitem--download', customFunction: (element, player) => downloadlink }
                 enabled: true,
-                // Provide the download link here
-                // If the download link is dynamic, you can provide it through a function
-                // Example: customFunction: (element, player) => dynamicDownloadLinkFunction(player)
                 element: '.plyrcontrolsitem--download',
                 customFunction: (download, player) => {
                     download.setAttribute('href', downloadlink);
