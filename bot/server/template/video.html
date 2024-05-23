@@ -248,18 +248,10 @@
         const downloadlink = `${domainUrl}/${videoId}/${encodedName}?id=${idParam}&hash=${hashParam}`;
 
         const player = new Plyr('#player', {
-            controls: ['rewind', 'play', 'fast-forward', 'progress', 'current-time', 'settings', 'download', 'fullscreen'],
+            controls: ['rewind', 'play', 'fast-forward', 'progress', 'current-time', 'settings', 'pip', 'fullscreen'],
             hideControls: true,
             keyboard: { focused: true, global: true },
             loop: { active: false },
-            download: {
-                enabled: true,
-                element: '.plyrcontrolsitem--download',
-                customFunction: (download, player) => {
-                    download.setAttribute('href', openDownloadLink);
-                    download.setAttribute('download', 'openDownloadLink'); // This attribute makes the link download the file instead of navigating to it
-                }
-            }
         });
         
         function mx_pro_player() {
