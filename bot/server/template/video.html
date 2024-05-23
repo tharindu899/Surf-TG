@@ -181,6 +181,7 @@
     <div class="video-player">
         <video controls crossorigin playsinline data-poster="<!-- Poster -->" id="player">
             <source src="#" type="video/mp4" />
+            <track kind="captions" label="English" srclang="en" src="#" default>
         </video>
     </div>
 
@@ -248,10 +249,19 @@
         const downloadlink = `${domainUrl}/${videoId}/${encodedName}?id=${idParam}&hash=${hashParam}`;
 
         const player = new Plyr('#player', {
-            controls: ['rewind', 'play', 'fast-forward', 'progress', 'current-time', 'settings', 'autoplay', 'fullscreen'],
+            controls: ['rewind', 'play', 'fast-forward', 'progress', 'current-time', 'settings', 'speed', 'captions', 'fullscreen'],
             hideControls: true,
             keyboard: { focused: true, global: true },
             loop: { active: false },
+            captions: {active: true},
+            speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] }
+            captions : { active: true, language: 'auto', update: false }
+            tooltips: { controls: true },
+            listeners: {
+                download: function () {
+                    window.location.href = downloadlink;
+                }
+            }
         });
         
         function mx_pro_player() {
