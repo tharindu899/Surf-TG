@@ -254,7 +254,7 @@
         const downloadlink = `${domainUrl}/${videoId}/${encodedName}?id=${idParam}&hash=${hashParam}`;
 
         const player = new Plyr('#player', {
-            controls: ['rewind', 'play', 'fast-forward', 'progress', 'current-time', 'settings', 'captions', 'download', 'fullscreen'],
+            controls: ['rewind', 'play', 'fast-forward', 'progress', 'current-time', 'settings', 'mute', 'volume', 'fullscreen'],
             hideControls: true,
             keyboard: { focused: true, global: true },
             loop: { active: false },
@@ -263,12 +263,12 @@
             captions: { active: true, update: true, language: 'auto' },
             hasAudio:  { active: true },
             tooltips: { controls: true },
-            listeners: {
-                download: function () {
-                    const openDownloadLink = downloadlink;
-                    window.location.href = openDownloadLink;
-                }
-            }
+           // listeners: {
+           //     download: function () {
+            //        const openDownloadLink = downloadlink;
+               //     window.location.href = openDownloadLink;
+             //   }
+            //}
         });
         
         function mx_pro_player() {
