@@ -285,6 +285,12 @@
             const openKmplayer = `intent:${openDownloadLink}#Intent;package=com.kmplayer;end`;
             window.location.href = openKmplayer;
         }
+        
+        function km_pc_player() {
+            const openDownloadLink = downloadlink;
+            const openKmplayerPc = `kmplayer://${openDownloadLink}`;
+            window.open(openKmplayerPc, '_blank');
+        }
 
         function download() {
             const openDownloadLink = downloadlink;
