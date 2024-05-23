@@ -262,7 +262,8 @@
             tooltips: { controls: true },
             listeners: {
                 download: function () {
-                    window.location.href = downloadlink;
+                    const openDownloadLink = downloadlink;
+                    window.location.href = openDownloadLink;
                 }
             }
         });
