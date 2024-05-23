@@ -259,13 +259,14 @@
             quality: { default: 1080, options: [1080, 720, 480], forced: true, onChange: e => console.log(e) },
             captions: { active: true, update: true, language: 'auto' },
             tooltips: { controls: true },
+            listeners: {
+                download: function () {
+                    const openDownloadLink = downloadlink;
+                    window.location.href = openDownloadLink;
+                }
+            }
         });
         
-        // Add event listener for download button
-        document.querySelector('.btn-primary[onclick="download()"]').addEventListener('click', function() {
-            window.location.href = downloadlink;
-        });
-
         function mx_pro_player() {
             const openDownloadLink = downloadlink;
             const openMxPro = `intent:${openDownloadLink}#Intent;package=com.mxtech.videoplayer.pro;end`;
@@ -290,6 +291,10 @@
             window.location.href = openKmplayer;
         }
 
+        function download() {
+            const openDownloadLink = downloadlink;
+            window.location.href = openDownloadLink;
+        }
 
         function get_file() {
             const regex = /(\d+)\?id=(\d+)&/;
