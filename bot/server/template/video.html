@@ -277,8 +277,10 @@
         function vlc_pc_player() {
             const openDownloadLink = downloadlink;
             const openVlcPc = `vlc://${openDownloadLink}`;
+            console.log("VLC PC Link: ", openVlcPc); // Debug statement
             window.open(openVlcPc, '_blank');
         }
+        
 
         function km_player() {
             const openDownloadLink = downloadlink;
