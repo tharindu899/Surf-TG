@@ -248,20 +248,11 @@
         const downloadlink = `${domainUrl}/${videoId}/${encodedName}?id=${idParam}&hash=${hashParam}`;
 
         const player = new Plyr('#player', {
-            controls: ['rewind','play', 'fast-forward', 'progress', 'current-time', 'download', 'settings', 'fullscreen'], // removed 'download' from controls
+            controls: ['rewind','play', 'fast-forward', 'progress', 'current-time', 'settings', 'download', 'fullscreen'],
             hideControls: true,
             keyboard: { focused: true, global: true },
             loop: { active: false },
-            download: {
-                enabled: true,
-                // specify the download link here
-                // assuming downloadlink is a valid URL
-                // if it's not, make sure to provide a valid URL
-                // or a function that returns the URL dynamically
-                // Example: download: { enabled: true, element: '.plyrcontrolsitem--download', customFunction: (element, player) => downloadlink }
-                element: document.querySelector('.plyrcontrolsitem--download'), // select the download button element
-                customFunction: (download, player) => downloadlink // provide the download link here
-            }
+            download:downloadlink,
         });
         
         function mx_pro_player() {
