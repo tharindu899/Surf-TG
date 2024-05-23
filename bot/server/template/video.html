@@ -271,11 +271,19 @@
             const openVlc = `vlc://${openDownloadLink}`;
             window.location.href = openVlc;
         }
-
+        
         function km_player() {
-            const openDownloadLink = downloadlink;
-            const openKmplayer = `intent:${openDownloadLink}#Intent;package=com.kmplayer;end`;
-            window.location.href = openKmplayer;
+        const openDownloadLink = downloadlink;
+        const userAgent = navigator.userAgent;
+
+            if (/Windows|Mac|Linux/.test(userAgent)) {
+                // User is on a PC
+                window.location.href = downloadlink;
+            } else {
+                // User is on a mobile device
+                const openKmplayer = `intent:${openDownloadLink}#Intent;package=com.kmplayer;end`;
+                window.location.href = openKmplayer;
+            }
         }
 
         function download() {
