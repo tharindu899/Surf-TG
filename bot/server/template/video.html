@@ -183,6 +183,13 @@
             font-size: 20px; /* Adjust the size as needed */
             color: #0c8d21; /* Color for the icon */
         }
+
+        .plyr__control--upload-subtitle {
+            padding: 0 10px;
+        }
+        #subtitle-input {
+            display: none;
+        }
     </style>
 </head>
 
@@ -199,6 +206,10 @@
         <video controls crossorigin playsinline data-poster="<!-- Poster -->" id="player">
             <source src="#" type="video/mp4" />
         </video>
+        <label class="plyrcontrolsitem plyrcontrol plyrcontrol--upload-subtitle" for="subtitle-input">
+            <svg><use xlink:href="#plyr-upload"></use></svg> Upload Subtitles
+        </label>
+        <input type="file" id="subtitle-input" accept=".vtt,.srt" />
     </div>
  
     <div class="card-body1">
@@ -271,23 +282,43 @@
         captions: { active: true, update: true, language: 'auto' },
         tooltips: { controls: false, seek: true },
     });
-    const controlsContainer = document.querySelector('.plyr__controls');
-        const downloadButton = document.createElement('button');
-        downloadButton.className = 'plyrcontrolsitem plyr__control';
-        downloadButton.setAttribute('type', 'button');
-        downloadButton.setAttribute('aria-label', 'Download');
-        downloadButton.innerHTML = '<svg><use xlink:href="#plyr-download"></use></svg>'; // Add appropriate SVG icon
-        controlsContainer.appendChild(downloadButton);
-
-        // Add click event listener to the download button
-        downloadButton.addEventListener('click', () => {
-            const a = document.createElement('a');
-            a.href = downloadlink;
-            a.download = downloadlink; // Change this to the desired filename
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
+    
+    document.getElementById('subtitle-input').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const subtitleTrack = document.createElement('track');
+                    subtitleTrack.kind = 'captions';
+                    subtitleTrack.label = 'Custom';
+                    subtitleTrack.srclang = 'en';
+                    subtitleTrack.src = URL.createObjectURL(new Blob([e.target.result], { type: 'text/vtt' }));
+                    player.media.appendChild(subtitleTrack);
+                    player.language = 'en';
+                    player.currentTrack = player.media.textTracks.length - 1;
+                    player.toggleCaptions(true);
+                };
+                reader.readAsText(file);
+            }
         });
+
+    const controlsContainer = document.querySelector('.plyr__controls');
+    const downloadButton = document.createElement('button');
+    downloadButton.className = 'plyrcontrolsitem plyr__control';
+    downloadButton.setAttribute('type', 'button');
+    downloadButton.setAttribute('aria-label', 'Download');
+    downloadButton.innerHTML = '<svg><use xlink:href="#plyr-download"></use></svg>'; // Add appropriate SVG icon
+    controlsContainer.appendChild(downloadButton);
+
+    // Add click event listener to the download button
+    downloadButton.addEventListener('click', () => {
+        const a = document.createElement('a');
+        a.href = downloadlink;
+        a.download = downloadlink; // Change this to the desired filename
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    });
 
     function mx_pro_player() {
         const openDownloadLink = downloadlink;
