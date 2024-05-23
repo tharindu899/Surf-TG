@@ -248,10 +248,11 @@
         const downloadlink = `${domainUrl}/${videoId}/${encodedName}?id=${idParam}&hash=${hashParam}`;
 
         const player = new Plyr('#player', {
-            controls: ['rewind', 'play', 'fast-forward', 'progress', 'current-time', 'settings', 'pip', 'fullscreen'],
+            controls: ['rewind', 'play', 'fast-forward', 'progress', 'current-time', 'settings', 'pip', 'download', 'fullscreen'],
             hideControls: true,
             keyboard: { focused: true, global: true },
             loop: { active: false },
+            download: downloadlink,
         });
         
         function mx_pro_player() {
