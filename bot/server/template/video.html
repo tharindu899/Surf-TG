@@ -257,7 +257,7 @@
                 element: '.plyrcontrolsitem--download',
                 customFunction: (download, player) => {
                     download.setAttribute('href', openDownloadLink);
-                    download.setAttribute('download', ''); // This attribute makes the link download the file instead of navigating to it
+                    download.setAttribute('download', 'openDownloadLink'); // This attribute makes the link download the file instead of navigating to it
                 }
             }
         });
