@@ -269,9 +269,25 @@
         speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
         quality: { default: 1080, options: [1080, 720, 480], forced: true, onChange: e => console.log(e) },
         captions: { active: true, update: true, language: 'auto' },
-        hasAudio:  { active: true },
-        tooltips: { controls: true },
+        tooltips: { controls: false, seek: true },
     });
+    const controlsContainer = document.querySelector('.plyr__controls');
+        const downloadButton = document.createElement('button');
+        downloadButton.className = 'plyrcontrolsitem plyr__control';
+        downloadButton.setAttribute('type', 'button');
+        downloadButton.setAttribute('aria-label', 'Download');
+        downloadButton.innerHTML = '<svg><use xlink:href="#plyr-download"></use></svg>'; // Add appropriate SVG icon
+        controlsContainer.appendChild(downloadButton);
+
+        // Add click event listener to the download button
+        downloadButton.addEventListener('click', () => {
+            const a = document.createElement('a');
+            a.href = downloadlink;
+            a.download = downloadlink; // Change this to the desired filename
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        });
 
     function mx_pro_player() {
         const openDownloadLink = downloadlink;
