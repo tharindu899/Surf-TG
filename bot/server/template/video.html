@@ -270,6 +270,7 @@
         quality: { default: 1080, options: [1080, 720, 480], forced: true, onChange: e => console.log(e) },
         captions: { active: true, update: true, language: 'auto' },
         tooltips: { controls: false, seek: true },
+        volume: 1, // Set volume to maximum
     });
     
     const controlsContainer = document.querySelector('.plyr__controls');
