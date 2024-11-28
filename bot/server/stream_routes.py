@@ -356,7 +356,7 @@ async def stream_handler(request: web.Request):
         chat_id = request.match_info['chat_id']
         chat_id = f"-100{chat_id}"
         message_id = request.query.get('id')
-        name = request.match_info['encoded_name']
+        #name = request.match_info['encoded_name']
         secure_hash = request.query.get('hash')
         return await media_streamer(request, int(chat_id), int(message_id), secure_hash)
     except InvalidHash as e:
